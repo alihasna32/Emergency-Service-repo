@@ -77,4 +77,23 @@ reuseableConnected('body').addEventListener('click', function(event){
 })
 
 
-    
+    // copy button
+ reuseableConnected('body').addEventListener('click', function(e) {
+    if (e.target.className.includes('card-copy-button')) {
+        const copy = e.target;
+
+        let copysElement = copy.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.children[0].children[1].children[2].children[0];
+
+        let copys = parseInt(copysElement.innerText);
+
+        copys = copys + 1;
+        console.log =  (copysElement.innerText = copys ,'Copy');
+        
+        const cardNumbers = copy.parentNode.parentNode.children[1].children[2]
+        const cardNumber = cardNumbers.innerText;
+
+        navigator.clipboard.writeText(cardNumber).then(() => {
+            alert('copied: ' + cardNumber);
+        });
+    }
+});
